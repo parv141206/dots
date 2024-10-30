@@ -1,7 +1,7 @@
 return {
   { "ellisonleao/gruvbox.nvim" },
   { "rebelot/kanagawa.nvim" },
-  { "catppuccin/nvim", name = "catppuccin", lazy = false },
+  { "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 }, -- Ensure high priority
   { "rose-pine/neovim", name = "rose-pine" },
   { "sainnhe/everforest" },
   { "bluz71/vim-nightfly-colors" },
@@ -9,22 +9,41 @@ return {
   { "romainl/Apprentice" },
 
   -- Additional popular dark themes
-  { "folke/tokyonight.nvim" }, -- A clean, dark theme inspired by Tokyo Night
-  { "navarasu/onedark.nvim" }, -- One Dark theme based on Atom's One Dark
-  { "Mofiqul/vscode.nvim" }, -- VSCode-inspired theme
-  { "marko-cerovac/material.nvim" }, -- Material design theme for Neovim
-  { "sainnhe/sonokai" }, -- High contrast & vivid color scheme based on Monokai Pro
-  { "shaunsingh/nord.nvim" }, -- Nord theme based on the Nord Color Palette
-  { "projekt0n/github-nvim-theme" }, -- GitHub's Neovim themes
-  { "sainnhe/gruvbox-material" }, -- Gruvbox with Material Palette
-  { "EdenEast/nightfox.nvim" }, -- Highly customizable theme for Neovim
-  { "olivercederborg/poimandres.nvim" }, -- Poimandres colorscheme for Neovim
+  { "folke/tokyonight.nvim" },
+  { "navarasu/onedark.nvim" },
+  { "Mofiqul/vscode.nvim" },
+  { "marko-cerovac/material.nvim" },
+  { "sainnhe/sonokai" },
+  { "shaunsingh/nord.nvim" },
+  { "projekt0n/github-nvim-theme" },
+  { "sainnhe/gruvbox-material" },
+  { "EdenEast/nightfox.nvim" },
+  { "olivercederborg/poimandres.nvim" },
 
   -- Configure LazyVim to load colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "dracula", -- Default colorscheme to use
+      colorscheme = "material-palenight", -- Set default colorscheme to catppuccin
     },
+  },
+
+  -- Set up Catppuccin with flavors
+  {
+    "catppuccin/nvim",
+    config = function()
+      require("catppuccin").setup({
+        flavour = "mocha", -- Choose your preferred flavor here (latte, frappe, macchiato, mocha)
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+        }
+      })
+      vim.cmd.colorscheme("catppuccin") -- Apply the colorscheme
+    end,
+    lazy = false, -- Load immediately
+    priority = 1000, -- Ensure it loads first
   },
 }

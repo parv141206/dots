@@ -22,6 +22,16 @@ return {
   end
 },
   {
+    "mattn/emmet-vim", -- Emmet plugin
+    ft = { "html", "css", "javascript", "typescript", "jsx", "tsx" }, -- Specify file types
+    config = function()
+      vim.g.user_emmet_leader_key = '<C-e>' -- Set your preferred leader key for Emmet
+    end,
+  },
+  {
+    "neoclide/coc.nvim", -- Ensure you have coc.nvim installed for LSP support
+  },
+  {
     "Exafunction/codeium.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",

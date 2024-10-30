@@ -19,12 +19,12 @@ return {
   { "sainnhe/gruvbox-material" },
   { "EdenEast/nightfox.nvim" },
   { "olivercederborg/poimandres.nvim" },
-
+  { "alexmozaidze/palenight.nvim", lazy = true },
   -- Configure LazyVim to load colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "material-palenight", -- Set default colorscheme to catppuccin
+      colorscheme = "palenight", -- Set default colorscheme to catppuccin
     },
   },
 
